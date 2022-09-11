@@ -50,6 +50,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    // use Picasso to load any given image URL in a single line
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    // use CardStackView to implement the Tinder style swipe view for like and unlike
+    implementation files("libs/card-stack-view-2.3.4.aar")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

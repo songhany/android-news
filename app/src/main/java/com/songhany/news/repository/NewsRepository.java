@@ -1,5 +1,7 @@
 package com.songhany.news.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -26,8 +28,10 @@ public class NewsRepository {
                     public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
                         if (response.isSuccessful()) {
                             topHeadlinesLiveData.setValue(response.body());
+                            Log.d("getTopHeadlines", response.body().toString());
                         } else {
                             topHeadlinesLiveData.setValue(null);
+                            Log.d("getTopHeadlines", response.toString());
                         }
                     }
 
