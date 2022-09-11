@@ -54,6 +54,10 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     // use CardStackView to implement the Tinder style swipe view for like and unlike
     implementation files("libs/card-stack-view-2.3.4.aar")
+    // Enable Room. Room has a pre-processor to compile the annotated objects into DB queries.
+    annotationProcessor "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-guava:2.4.2"
+    implementation "androidx.room:room-runtime:2.4.2"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

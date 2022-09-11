@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.songhany.news.model.Article;
 import com.songhany.news.model.NewsResponse;
 import com.songhany.news.repository.NewsRepository;
 
@@ -17,10 +18,17 @@ public class HomeViewModel extends ViewModel {
         this.repository = newsRepository;
     }
 
+    // event
     public void setCountryInput(String country) {
         // data store change logic
         countryInput.setValue(country);
     }
+
+    // event
+    public void setFavoriteArticleInput(Article article) {  // the API to favorite an article
+        repository.favoriteArticle(article);
+    }
+
 
     public LiveData<NewsResponse> getTopHeadlines() {
         // countryInput livedata -> switch/translate -> top headline livedata
