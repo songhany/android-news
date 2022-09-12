@@ -13,6 +13,8 @@ import com.songhany.news.model.NewsResponse;
 import com.songhany.news.network.NewsApi;
 import com.songhany.news.network.RetrofitClient;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -71,6 +73,13 @@ public class NewsRepository {
         return everyThingLiveData;
     }
 
+    public LiveData<List<Article>> getAllSavedArticles() {
+        return database.articleDao().getAllArticles();
+    }
+
+    public void deleteSavedArticle(Article article) {
+        AsyncTask.execute(() -> database.articleDao().deleteArticle(article));
+    }
 
     public LiveData<Boolean> favoriteArticle(Article article) {
         MutableLiveData<Boolean> resultLiveData = new MutableLiveData<>();
@@ -106,6 +115,7 @@ public class NewsRepository {
             liveData.setValue(success);
         }
     }
+
 }
 
 
