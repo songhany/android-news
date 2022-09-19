@@ -18,6 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.SearchNewsViewHolder> {
+
+    interface ItemCallback {  // We usually put interface definition at the top, then private variables, lastly functions.
+        void onOpenDetails(Article article);  // onOpenDetails is to be implemented for opening a new fragment for article details.
+    }
+
+    private ItemCallback itemCallback;
+
+    public void setItemCallback(ItemCallback itemCallback) {
+        this.itemCallback = itemCallback;
+    }
+
+
     // 1. Supporting data:
     private List<Article> articles = new ArrayList<>();
 
@@ -47,6 +59,7 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
         if (article.urlToImage != null) {
             Picasso.get().load(article.urlToImage).resize(200, 200).into(holder.itemImageView);
         }
+        holder.itemView.setOnClickListener(v -> itemCallback.onOpenDetails(article));
     }
 
     @Override

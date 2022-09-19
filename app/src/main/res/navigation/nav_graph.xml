@@ -15,11 +15,31 @@
         android:id="@+id/navigation_save"
         android:name="com.songhany.news.ui.save.SaveFragment"
         android:label="@string/title_save"
-        tools:layout="@layout/fragment_save" />
+        tools:layout="@layout/fragment_save" >
+        <action
+            android:id="@+id/action_navigation_save_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.songhany.news.ui.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
+    <!-- The destination specifies where the routing action goes to.
+    There are more options you can apply to the actions, including animation and pop behavior. -->
+
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="com.songhany.news.ui.details.DetailsFragment"
+        android:label="@string/title_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="article"
+            app:argType="com.songhany.news.model.Article" />
+    </fragment>
 </navigation>
